@@ -7,7 +7,7 @@
     <th>登録日時</th>
   </tr>
   <% @tasks.each do |task| %>
-    <tr>
+    <tr class="task_row">
       <td><%= task.title %></td>
       <td><%= task.content %></td>
       <td><%= task.created_at.strftime('%Y-%m-%d %H:%M:%S') %></td>
