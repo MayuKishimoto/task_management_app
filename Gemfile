@@ -4,7 +4,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby "3.0.1"
 
 gem "rails", "~> 6.1.6"
-gem "pg", "~> 1.1"
+gem "pg", "~> 1.4.6"
 gem "puma", "~> 5.0"
 gem "sass-rails", ">= 6"
 gem "webpacker", "~> 5.0"
@@ -32,3 +32,6 @@ group :test do
 end
 
 gem "tzinfo-data", platforms: %i[mingw mswin x64_mingw jruby]
+gem 'net-smtp'
+gem 'net-imap'
+gem 'net-pop'
