@@ -26,6 +26,11 @@
     <%= form.date_select :expired_at %>
   </div>
 
+  <div class="task">
+    <%= form.label :status %>
+    <%= form.select :status, ["未着手", "着手中", "完了"] %>
+  </div>
+
   <%= form.submit "登録"%>
 <% end %>
 <%= link_to "戻る", tasks_path %>
