@@ -6,12 +6,15 @@ RSpec.describe "タスク管理機能", type: :system do
     context "タスクを新規作成した場合" do
       it "作成したタスクが表示される" do
         visit new_task_path
-        fill_in 'Title', with: 'タイトル'
-        fill_in 'Content', with: 'コンテント'
+        fill_in 'Title', with: 'タイトル０'
+        fill_in 'Content', with: 'コンテント０'
+        select '2024',from: 'task[expired_at(1i)]'
+        select '1月',from: 'task[expired_at(2i)]'
+        select '1',from: 'task[expired_at(3i)]'
         click_on '登録'
-        expect(page).to have_content 'タイトル'
-        expect(page).to have_content 'コンテント'
-        expect(page).to have_content '2023-05-04'
+        expect(page).to have_content 'タイトル０'
+        expect(page).to have_content 'コンテント０'
+        expect(page).to have_content '2024-01-01'
       end
     end
   end
