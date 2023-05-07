@@ -5,11 +5,13 @@
   <%= form.hidden_field :content %>
   <%= form.hidden_field :expired_at %>
   <%= form.hidden_field :status %>
+  <%= form.hidden_field :priority %>
 
   <p>タイトル:<%= @task.title %></p>
   <p>本文:<%= @task.content %></p>
   <p>終了期限:<%= @task.expired_at.strftime('%Y-%m-%d') %></p>
   <p>ステータス:<%= @task.status %></p>
+  <p>優先順位:<%= @task.priority %></p>
   <%= form.submit "登録" %>
 
   <%= form.submit "戻る", name: 'back' %>

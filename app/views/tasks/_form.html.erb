@@ -31,6 +31,11 @@
     <%= form.select :status, ["未着手", "着手中", "完了"] %>
   </div>
 
+  <div class="task">
+    <%= form.label :priority %>
+    <%= form.select :priority, Task.priorities.keys.map %>
+  </div>
+
   <%= form.submit "登録"%>
 <% end %>
 <%= link_to "戻る", tasks_path %>

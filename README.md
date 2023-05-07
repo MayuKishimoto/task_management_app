@@ -7,6 +7,7 @@
 |content|text||
 |expired_at|datetime||
 |status|string||
+|priority|integer||
 
 ### users テーブル
 |Column|Type|Options|
