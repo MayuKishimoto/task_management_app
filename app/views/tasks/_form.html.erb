@@ -28,7 +28,7 @@
 
   <div class="task">
     <%= form.label :status %>
-    <%= form.select :status, ["未着手", "着手中", "完了"] %>
+    <%= form.select :status, Task.statuses.keys.map %>
   </div>
 
   <div class="task">
