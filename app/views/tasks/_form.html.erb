@@ -2,21 +2,40 @@
   <% if @task.errors.any? %>
     <div id="error_explanation">
       <h2><%= @task.errors.count %>件のエラーがあります。</h2>
-        <ul>
-          <% @task.errors.full_messages.each do |msg| %>
-            <li><%= msg %></li>
-          <% end %>
-        </ul>
+
+      <ul>
+        <% @task.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
     </div>
   <% end %>
+
   <div class="task">
     <%= form.label :title %>
     <%= form.text_field :title %>
   </div>
+
   <div class="task">
     <%= form.label :content %>
     <%= form.text_field :content %>
   </div>
+
+  <div class="task">
+    <%= form.label :expired_at %>
+    <%= form.date_select :expired_at %>
+  </div>
+
+  <div class="task">
+    <%= form.label :status %>
+    <%= form.select :status, Task.statuses.keys.map %>
+  </div>
+
+  <div class="task">
+    <%= form.label :priority %>
+    <%= form.select :priority, Task.priorities.keys.map %>
+  </div>
+
   <%= form.submit "登録"%>
 <% end %>
 <%= link_to "戻る", tasks_path %>

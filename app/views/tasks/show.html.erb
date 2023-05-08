@@ -1,4 +1,7 @@
 <h1>詳細</h1>
-<p>タイトル: <%= @task.title %></p>
-<p>内容: <%= @task.content %></p>
+<p>タイトル:<%= @task.title %></p>
+<p>内容:<%= @task.content %></p>
+<p>終了期限:<%= @task.expired_at.strftime('%Y-%m-%d') %></p>
+<p>ステータス:<%= @task.status %></p>
+<p>優先順位:<%= @task.priority %></p>
 <%= link_to "戻る", tasks_path %>

@@ -35,3 +35,8 @@ gem "tzinfo-data", platforms: %i[mingw mswin x64_mingw jruby]
 gem 'net-smtp'
 gem 'net-imap'
 gem 'net-pop'
+gem 'pry-rails'
+gem 'pry-byebug'
+gem 'better_errors'
+gem 'binding_of_caller'
+gem 'kaminari'
