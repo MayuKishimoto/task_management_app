@@ -5,9 +5,9 @@
 |------|----|-------|
 |title|string|null: false|
 |content|text||
-|expired_at|datetime||
-|status|string||
-|priority|integer||
+|expired_at|datetime|null: false|
+|status|string|null: false|
+|priority|integer|null: false|
 
 ### users テーブル
 |Column|Type|Options|
