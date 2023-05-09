@@ -7,4 +7,5 @@ class Task < ApplicationRecord
     scope :title_search, -> (title){where('title LIKE ?', "%#{title}%")}
     scope :status_search, -> (status){where('status LIKE ?', "#{status}")}
     paginates_per 10
+    belongs_to :user
 end
