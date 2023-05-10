@@ -15,6 +15,7 @@
 |name|string|null: false|
 |email|string|null: false, unique: true|
 |password_digest|string|null: false|
+|admin|boolean|null: false|
 
 ## Heroku へのデプロイ手順
 ### 開始前のチェック項目
