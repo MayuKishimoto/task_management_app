@@ -11,26 +11,26 @@
   </div>
 <% end %>
 
-<%= form_with(model: @user, local: true) do |f| %>
+<%= form_with(model: @user, local: true) do |form| %>
   <div class="user_form">
-    <%= f.label :name %>
-    <%= f.text_field :name %>
+    <%= form.label :name %>
+    <%= form.text_field :name %>
   </div>
 
   <div class="user_form">
-    <%= f.label :email %>
-    <%= f.email_field :email %>
+    <%= form.label :email %>
+    <%= form.email_field :email %>
   </div>
 
   <div class="user_form">
-    <%= f.label :password %>
-    <%= f.password_field :password %>
+    <%= form.label :password %>
+    <%= form.password_field :password %>
   </div>
 
   <div class="user_form">
-    <%= f.label :password_confirmation %>
-    <%= f.password_field :password_confirmation %>
+    <%= form.label :password_confirmation %>
+    <%= form.password_field :password_confirmation %>
   </div>
 
-  <%= f.submit "登録" %>
+  <%= form.submit "登録" %>
 <% end %>

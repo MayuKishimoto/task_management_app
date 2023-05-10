@@ -1,29 +1,26 @@
 <h1>タスク一覧</h1>
 <p><%= notice %></p>
 <%= form_with( url: tasks_path, method: :get, scope: :task, local: true ) do |form| %>
-<div class="row g-3 align-items-center">
-  <div class="col-auto">
-  <%= form.label :title, "タスク名", class: "form-label" %>
+  <div class="row g-3 align-items-center">
+    <div class="col-auto">
+      <%= form.label :title, "タスク名", class: "form-label" %>
+    </div>
+    <div class="col-auto">
+      <%= form.text_field :title, class: "form-control", placeholder: "検索..." %>
+    </div>
+    <div class="col-auto">
+      <%= form.label :status, "ステータス", class: "form-label" %>
+    </div>
+    <div class="col-auto">
+      <%= form.select :status, Task.statuses.keys, {include_blank: true}, class: 'form-control' %>
+    </div>
+    <%= form.submit "検索", class: "btn btn-outline-dark" %>
   </div>
-  <div class="col-auto">
-  <%= form.text_field :title, class: "form-control", placeholder: "検索..." %>
-  </div>
-  <div class="col-auto">
-  <%= form.label :status, "ステータス", class: "form-label" %>
-  </div>
-  <div class="col-auto">
-  <%= form.select :status, Task.statuses.keys, {include_blank: true}, class: 'form-control' %>
-  </div>
-  <%= form.submit "検索", class: "btn btn-outline-dark" %>
-</div>
-
-
-
-
 <% end %>
 <%= link_to '新規作成', new_task_path, class: "btn btn-primary" %>
 <table>
   <tr>
+    <th>ユーザー名</th>
     <th>タスク名</th>
     <th>詳しい内容</th>
     <th>登録日時</th>
@@ -33,6 +30,7 @@
   </tr>
   <% @tasks.each do |task| %>
     <tr class="task_row">
+      <td><%= task.user.name %></td>
       <td><%= task.title %></td>
       <td><%= task.content %></td>
       <td><%= task.created_at.strftime('%Y-%m-%d %H:%M:%S') %></td>
