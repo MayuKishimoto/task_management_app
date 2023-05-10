@@ -1,9 +1,15 @@
 require "rails_helper"
 RSpec.describe "タスク管理機能", type: :system do
+  let!(:user) { FactoryBot.create(:user) }
+  let!(:task) { FactoryBot.create(:task, user: user) }
+  let!(:second_task) { FactoryBot.create(:second_task, user: user) }
+  let!(:third_task) { FactoryBot.create(:third_task, user: user) }
+
   before do
-    FactoryBot.create(:task)
-    FactoryBot.create(:second_task)
-    FactoryBot.create(:third_task)
+    visit new_session_path
+    fill_in 'Email', with: 'ippan@ippan.com'
+    fill_in 'Password', with: 'password'
+    click_on 'Log in'
   end
 
   describe "新規作成機能" do
