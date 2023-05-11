@@ -1,6 +1,14 @@
 # README
 ## テーブル設計
-### tasks テーブル
+### usersテーブル
+|Column|Type|Options|
+|------|----|-------|
+|name|string|null: false|
+|email|string|null: false, unique: true|
+|password_digest|string|null: false|
+|admin|boolean|null: false|
+
+### tasksテーブル
 |Column|Type|Options|
 |------|----|-------|
 |title|string|null: false|
@@ -9,13 +17,16 @@
 |status|string|null: false|
 |priority|integer|null: false|
 
-### users テーブル
+### labelsテーブル
 |Column|Type|Options|
 |------|----|-------|
-|name|string|null: false|
-|email|string|null: false, unique: true|
-|password_digest|string|null: false|
-|admin|boolean|null: false|
+|name|string||
+
+### labellings"テーブル
+|Column|Type|Options|
+|------|----|-------|
+|task_id|integer|null: false|
+|abel_id|integer|null: false|
 
 ## Heroku へのデプロイ手順
 ### 開始前のチェック項目
