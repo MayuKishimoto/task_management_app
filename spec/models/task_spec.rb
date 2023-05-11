@@ -1,30 +1,32 @@
 require 'rails_helper'
 RSpec.describe 'タスクモデル機能', type: :model do
+  let!(:user) { FactoryBot.create(:user) }
+
   describe 'バリデーションのテスト' do
     context 'タスクのタイトルが空の場合' do
-      it 'バリデーションにひっかる' do
-        task = Task.new(title: '', content: '失敗テスト')
+      it 'バリデーションにひっかかる' do
+        task = Task.new(title: '', content: '失敗テスト', user_id: user.id )
         expect(task).not_to be_valid
       end
     end
     context 'タスクの詳細が空の場合' do
       it 'バリデーションにひっかかる' do
-        task = Task.new(title: '失敗テスト', content: '')
+        task = Task.new(title: '失敗テスト', content: '', user_id: user.id )
         expect(task).not_to be_valid
       end
     end
     context 'タスクのタイトルと詳細に内容が記載されている場合' do
       it 'バリデーションが通る' do
-        task = Task.new(title: '失敗テスト', content: '失敗テスト')
+        task = Task.new(title: '失敗テスト', content: '失敗テスト', user_id: user.id )
         expect(task).to be_valid
       end
     end
   end
   
   describe '検索機能' do
-    let!(:task) { FactoryBot.create(:task) }
-    let!(:second_task) { FactoryBot.create(:second_task) }
-    let!(:third_task) { FactoryBot.create(:third_task) }
+    let!(:task) { FactoryBot.create(:task, user: user) }
+    let!(:second_task) { FactoryBot.create(:second_task, user: user) }
+    let!(:third_task) { FactoryBot.create(:third_task, user: user) }
     context 'scopeメソッドでタイトルのあいまい検索をした場合' do
       it "検索キーワードを含むタスクが絞り込まれる" do
         expect(Task.title_search('タイトル１')).to include(task)

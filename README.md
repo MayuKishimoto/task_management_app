@@ -5,9 +5,9 @@
 |------|----|-------|
 |title|string|null: false|
 |content|text||
-|expired_at|datetime||
-|status|string||
-|priority|integer||
+|expired_at|datetime|null: false|
+|status|string|null: false|
+|priority|integer|null: false|
 
 ### users テーブル
 |Column|Type|Options|
@@ -15,6 +15,7 @@
 |name|string|null: false|
 |email|string|null: false, unique: true|
 |password_digest|string|null: false|
+|admin|boolean|null: false|
 
 ## Heroku へのデプロイ手順
 ### 開始前のチェック項目
