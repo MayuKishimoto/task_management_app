@@ -3,10 +3,13 @@ class TasksController < ApplicationController
     if params[:task].present?
       title = params[:task][:title]
       status = params[:task][:status]
+      label = params[:task][:label_id]
       if title.present? && status.present?
         @tasks = current_user.tasks.title_search(title).status_search(status).page(params[:page])
       elsif title.present? && status.blank?
         @tasks = current_user.tasks.title_search(title).page(params[:page])
+      elsif label.present?
+        @tasks = current_user.tasks.label_search(label).page(params[:page])
       else
         @tasks = current_user.tasks.status_search(status).page(params[:page])
       end
@@ -67,6 +70,6 @@ class TasksController < ApplicationController
   private
 
   def task_params
-    params.require(:task).permit(:title, :content, :expired_at, :status, :priority, label_ids: [])
+    params.require(:task).permit(:title, :content, :expired_at, :status, :priority, { label_ids:[] } )
   end
 end

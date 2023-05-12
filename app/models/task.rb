@@ -7,6 +7,7 @@ class Task < ApplicationRecord
     enum priority: { 高: 3, 中: 2, 低: 1 }
     scope :title_search, -> (title){where('title LIKE ?', "%#{title}%")}
     scope :status_search, -> (status){where('status LIKE ?', "#{status}")}
+    scope :label_search, -> (label_ids){where(id: Labelling.where(label_id: label_ids).pluck(:task_id))}
     paginates_per 10
     belongs_to :user
 end

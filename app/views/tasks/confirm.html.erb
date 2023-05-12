@@ -6,7 +6,9 @@
   <%= form.hidden_field :expired_at %>
   <%= form.hidden_field :status %>
   <%= form.hidden_field :priority %>
-  <%= form.hidden_field :label %>
+  <% @task.labels.each do |label| %> 
+    <%= form.hidden_field :label_ids, multiple: true, value: label.id %> 
+  <% end %> 
 
   <p>タイトル:<%= @task.title %></p>
   <p>本文:<%= @task.content %></p>
