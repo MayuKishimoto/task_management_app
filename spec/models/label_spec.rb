@@ -1,5 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Label, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  it "有効なlabelを生成できる" do
+    expect(FactoryBot.create(:label)).to be_valid
+  end
 end
