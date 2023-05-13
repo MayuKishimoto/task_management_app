@@ -11,4 +11,6 @@ Rails.application.routes.draw do
       post :confirm
     end
   end
+  resources :labels
+  resources :labelilingss
 end

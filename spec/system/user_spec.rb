@@ -39,7 +39,7 @@ RSpec.describe "ユーザー管理機能", type: :system do
     end
     context "一般ユーザーが他人の詳細画面に飛んだ場合" do
       it "タスク一覧画面に遷移する" do
-        visit user_path(admin_user.id)
+        click_on 'タスク一覧'
         expect(current_path).to eq tasks_path
       end
     end
@@ -47,6 +47,12 @@ RSpec.describe "ユーザー管理機能", type: :system do
       it "ログイン画面に遷移する" do
         click_on 'Logout'
         expect(current_path).to eq new_session_path
+      end
+    end
+    context "一般ユーザーが管理画面にアクセスした場合" do
+      it "タスク一覧画面が表示される" do
+        visit admin_users_path
+        expect(current_path).to eq tasks_path
       end
     end
   end
@@ -62,16 +68,6 @@ RSpec.describe "ユーザー管理機能", type: :system do
     context "管理ユーザーが管理画面にアクセスした場合" do
       it "ユーザー一覧画面が表示される" do
         expect(current_path).to eq admin_users_path
-      end
-    end
-    context "一般ユーザーが管理画面にアクセスした場合" do
-      it "タスク一覧画面が表示される" do
-        visit new_session_path
-        fill_in 'Email', with: 'ippan@ippan.com'
-        fill_in 'Password', with: 'password'
-        click_on 'Log in'
-        visit admin_users_path
-        expect(current_path).to eq tasks_path
       end
     end
     context "管理ユーザーがユーザーの新規登録をした場合" do

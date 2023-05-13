@@ -33,7 +33,7 @@ RSpec.describe "タスク管理機能", type: :system do
 
   describe "一覧表示機能" do
     before do
-      visit tasks_path
+      click_on 'タスク一覧'
     end
     context "一覧画面に遷移した場合" do
       it "作成済みのタスク一覧が表示される" do
@@ -78,7 +78,7 @@ RSpec.describe "タスク管理機能", type: :system do
   describe "詳細表示機能" do
     context "任意のタスク詳細画面に遷移した場合" do
       it "該当タスクの内容が表示される" do
-        visit tasks_path
+        click_on 'タスク一覧'
         click_on '詳細', match: :first
         page.html
         expect(page).to have_content 'タイトル'
@@ -88,7 +88,7 @@ RSpec.describe "タスク管理機能", type: :system do
   
   describe '検索機能' do
     before do
-      visit tasks_path
+      click_on 'タスク一覧'
     end
     context 'タイトルであいまい検索をした場合' do
       it "検索キーワードを含むタスクで絞り込まれる" do
