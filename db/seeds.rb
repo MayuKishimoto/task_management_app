@@ -10,7 +10,7 @@
   Task.create!(
     title: "タイトル#{n + 1}",
     content: "コンテント#{n + 1}",
-    user_id: 102
+    user_id: 1
   )
   Label.create!(
     name: "ラベル#{n + 1}"
